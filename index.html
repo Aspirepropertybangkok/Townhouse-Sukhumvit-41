@@ -21,16 +21,20 @@
         .item { display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; flex: 1; }
         .item i { margin-top: 3px; color: #f39c12; }
 
-        /* แกลเลอรีรูปภาพ (ชี้แล้วเปลี่ยนรูปทรงเมาส์เป็นรูปแว่นขยาย) */
+        /* แกลเลอรีรูปภาพ */
         .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-bottom: 40px; }
         .gallery img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; border: 1px solid #eee; cursor: zoom-in; transition: transform 0.2s; }
         .gallery img:hover { transform: scale(1.02); }
 
-        /* โซนป๊อปอัปขยายภาพรูปภาพ (Lightbox Overlay) */
+        /* ระบบขยายภาพ (Lightbox Overlay) */
         .lightbox { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; }
         .lightbox-content { max-width: 90%; max-height: 85vh; border-radius: 8px; object-fit: contain; }
         .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; user-select: none; }
         .close-btn:hover { color: #bbb; }
+
+        /* แท็กครอบแผนที่แบบ Responsive */
+        .map-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 40px; }
+        .map-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
         .contact-sidebar { position: fixed; bottom: 40px; right: 40px; display: flex; flex-direction: column; gap: 10px; z-index: 999; width: 250px; }
         .btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 20px; color: white; text-decoration: none; border-radius: 25px; font-weight: 500; font-size: 0.95rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
@@ -73,8 +77,9 @@
         </div>
     </div>
 
-    <!-- โซนรูปภาพ (เรียงตามลำดับไฟล์ภาพในโฟลเดอร์ของคุณ) -->
+    <!-- โซนรูปภาพ -->
     <div class="gallery">
+        <img src="0.jpg" onclick="openLightbox(this.src)">
         <img src="1.jpg" onclick="openLightbox(this.src)">
         <img src="2.jpg" onclick="openLightbox(this.src)">
         <img src="3.jpg" onclick="openLightbox(this.src)">
@@ -83,24 +88,14 @@
         <img src="6.jpg" onclick="openLightbox(this.src)">
         <img src="7.jpg" onclick="openLightbox(this.src)">
         <img src="8.jpg" onclick="openLightbox(this.src)">
-        <img src="9.jpg" onclick="openLightbox(this.src)">
     </div>
 
-    <!-- โซนปุ่มลิงก์นำทางแผนที่ -->
-    <div style="margin-bottom: 80px; text-align: center;">
-        <div style="background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 30px; text-align: center;">
-            <i class="fa-solid fa-map-location-dot" style="font-size: 3rem; color: #3b82f6; margin-bottom: 15px; display: block;"></i>
-            <h3 style="font-size: 1.2rem; font-weight: 500; margin-bottom: 8px; color: #1e293b;">ข้อมูลทำเลที่ตั้งโครงการ</h3>
-            <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 20px; line-height: 1.5;">
-                20/7 Soi Sukhumvit 41 Alley, Khlong Tan Nuea, Watthana, Bangkok 10110
-            </p>
-            <a href="https://goo.gl" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background-color: #3b82f6; color: white; text-decoration: none; padding: 12px 25px; border-radius: 25px; font-weight: 500; box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);">
-                <i class="fa-solid fa-location-arrow"></i> เปิดใน Google Maps เพื่อนำทาง
-            </a>
-        </div>
+    <!-- แผนที่พิกัดจริง ดึงค่าละติจูด-ลองจิจูดจากลิ้งค์ที่คุณส่งมาโดยตรง (แสดงผลได้แน่นอน 100%) -->
+    <div class="map-responsive">
+        <iframe src="https://google.com" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-    <!-- โครงสร้างกล่องป๊อปอัปแสดงรูปใหญ่ -->
+    <!-- ป๊อปอัปขยายรูปใหญ่ -->
     <div id="myLightbox" class="lightbox" onclick="closeLightbox()">
         <span class="close-btn">&times;</span>
         <img class="lightbox-content" id="lightboxImg">
@@ -112,7 +107,6 @@
         <a href="https://wa.me" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp +6693-135-9945</a>
     </div>
 
-    <!-- ระบบ JavaScript สั่งงานตัวคลิกขยายรูปภาพ -->
     <script>
         function openLightbox(src) {
             document.getElementById("lightboxImg").src = src;

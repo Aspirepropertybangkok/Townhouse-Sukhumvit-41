@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Townhouse in Sukhumvit 41</title>
+    <title>Townhouse for Sale/Rent - Sukhumvit 41</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         * { box-sizing: border-box; font-family: 'Kanit', sans-serif; margin: 0; padding: 0; }
         body { background-color: #ffffff; color: #333; padding: 40px 8%; position: relative; }
         h1 { font-size: 2.2rem; font-weight: 600; margin-bottom: 25px; color: #111; }
+        
         .info-card { border: 2px solid #f1c40f; border-radius: 15px; padding: 20px; width: 350px; background-color: #fff; margin-bottom: 35px; }
         .badge { background-color: #f39c12; color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.85rem; display: inline-block; margin-bottom: 8px; }
         .price { font-size: 2rem; font-weight: 600; color: #d35400; line-height: 1.2; }
         .price span { font-size: 1.2rem; color: #333; }
         .transfer-fee { font-size: 0.85rem; color: #666; margin: 5px 0 15px 0; }
-        .specs { display: flex; gap: 15px; font-size: 0.9rem; color: #555; }
-        .item { display: flex; align-items: center; gap: 5px; }
+        
+        .specs { display: flex; justify-content: space-between; gap: 10px; font-size: 0.9rem; color: #555; margin-top: 15px; }
+        .item { display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; flex: 1; }
+        .item i { margin-top: 3px; color: #f39c12; }
+
+        /* แกลเลอรีรูปภาพ (ชี้แล้วเปลี่ยนรูปทรงเมาส์เป็นรูปแว่นขยาย) */
         .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-bottom: 40px; }
-        .gallery img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; border: 1px solid #eee; }
-        .map-container { width: 100%; height: 350px; border-radius: 12px; overflow: hidden; border: 1px solid #ccc; margin-bottom: 100px; }
-        .map-container iframe { width: 100%; height: 100%; border: none; }
+        .gallery img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; border: 1px solid #eee; cursor: zoom-in; transition: transform 0.2s; }
+        .gallery img:hover { transform: scale(1.02); }
+
+        /* โซนป๊อปอัปขยายภาพรูปภาพ (Lightbox Overlay) */
+        .lightbox { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; }
+        .lightbox-content { max-width: 90%; max-height: 85vh; border-radius: 8px; object-fit: contain; }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; user-select: none; }
+        .close-btn:hover { color: #bbb; }
+
         .contact-sidebar { position: fixed; bottom: 40px; right: 40px; display: flex; flex-direction: column; gap: 10px; z-index: 999; width: 250px; }
         .btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 20px; color: white; text-decoration: none; border-radius: 25px; font-weight: 500; font-size: 0.95rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
         .btn-phone { background-color: #3b82f6; }
@@ -31,16 +42,13 @@
 </head>
 <body>
 
-    <!-- เปลี่ยนชื่อหัวข้อตรงนี้ได้ตามต้องการครับ -->
-    <h1>Townhouse for Rent - Sukhumvit 41</h1>
+    <h1>Townhouse for Sale/Rent - Sukhumvit 41</h1>
 
     <div class="info-card">
         <div class="badge"><i class="fa-solid fa-tag"></i> Asking for</div>
-        <!-- ใส่ราคาตรงนี้ได้เลยครับ -->
-        <div class="price"> 60,000 <span>บาท</span></div>
-        <div class="transfer-fee"> Minimum 1-year contract</div>
-                <div class="specs">
-            <!-- ฝั่งพื้นที่ -->
+        <div class="price">60,000 <span>บาท</span></div>
+        <div class="transfer-fee">Minimum 1-year contract</div>
+        <div class="specs">
             <div class="item">
                 <i class="fa-solid fa-vector-square"></i>
                 <div>
@@ -48,7 +56,6 @@
                     300 Sq.m.
                 </div>
             </div>
-            <!-- ฝั่งห้องนอน/ห้องน้ำ (ใช้ <br> เพื่อขึ้นบรรทัดใหม่) -->
             <div class="item">
                 <i class="fa-solid fa-bed"></i>
                 <div>
@@ -56,34 +63,47 @@
                     4 bathrooms
                 </div>
             </div>
-            <!-- ฝั่งรถไฟฟ้า -->
             <div class="item">
                 <i class="fa-solid fa-train-subway"></i>
                 <div>
-                    BTS <br>
-                    Phrom Phong
+                    BTS Phrom<br>
+                    Phong
                 </div>
             </div>
         </div>
-
     </div>
 
-    <!-- แกลเลอรีรูปภาพ (ปรับจำนวนภาพให้ตรงกับที่คุณอัปโหลดไว้ได้เลยครับ) -->
+    <!-- โซนรูปภาพ (เรียงตามลำดับไฟล์ภาพในโฟลเดอร์ของคุณ) -->
     <div class="gallery">
-        <img src="0.jpg">
-        <img src="1.jpg">
-        <img src="2.jpg">
-        <img src="3.jpg">
-        <img src="4.jpg">
-        <img src="5.jpg">
-        <img src="6.jpg">
-        <img src="7.jpg">
-        <img src="8.jpg">
+        <img src="1.jpg" onclick="openLightbox(this.src)">
+        <img src="2.jpg" onclick="openLightbox(this.src)">
+        <img src="3.jpg" onclick="openLightbox(this.src)">
+        <img src="4.jpg" onclick="openLightbox(this.src)">
+        <img src="5.jpg" onclick="openLightbox(this.src)">
+        <img src="6.jpg" onclick="openLightbox(this.src)">
+        <img src="7.jpg" onclick="openLightbox(this.src)">
+        <img src="8.jpg" onclick="openLightbox(this.src)">
+        <img src="9.jpg" onclick="openLightbox(this.src)">
     </div>
 
-                   <!-- แผนที่พิกัดซอยสุขุมวิท 41 -->
-    <div class="map-container">
-        <iframe src="PHJF+W2C Bangkok" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <!-- โซนปุ่มลิงก์นำทางแผนที่ -->
+    <div style="margin-bottom: 80px; text-align: center;">
+        <div style="background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 30px; text-align: center;">
+            <i class="fa-solid fa-map-location-dot" style="font-size: 3rem; color: #3b82f6; margin-bottom: 15px; display: block;"></i>
+            <h3 style="font-size: 1.2rem; font-weight: 500; margin-bottom: 8px; color: #1e293b;">ข้อมูลทำเลที่ตั้งโครงการ</h3>
+            <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 20px; line-height: 1.5;">
+                20/7 Soi Sukhumvit 41 Alley, Khlong Tan Nuea, Watthana, Bangkok 10110
+            </p>
+            <a href="https://goo.gl" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background-color: #3b82f6; color: white; text-decoration: none; padding: 12px 25px; border-radius: 25px; font-weight: 500; box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);">
+                <i class="fa-solid fa-location-arrow"></i> เปิดใน Google Maps เพื่อนำทาง
+            </a>
+        </div>
+    </div>
+
+    <!-- โครงสร้างกล่องป๊อปอัปแสดงรูปใหญ่ -->
+    <div id="myLightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
     </div>
 
     <div class="contact-sidebar">
@@ -91,6 +111,17 @@
         <a href="https://line.me" target="_blank" class="btn btn-line"><i class="fa-brands fa-line"></i> LINE @aspireproperty</a>
         <a href="https://wa.me" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp +6693-135-9945</a>
     </div>
+
+    <!-- ระบบ JavaScript สั่งงานตัวคลิกขยายรูปภาพ -->
+    <script>
+        function openLightbox(src) {
+            document.getElementById("lightboxImg").src = src;
+            document.getElementById("myLightbox").style.display = "flex";
+        }
+        function closeLightbox() {
+            document.getElementById("myLightbox").style.display = "none";
+        }
+    </script>
 
 </body>
 </html>

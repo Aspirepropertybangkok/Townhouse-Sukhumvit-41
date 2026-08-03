@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Townhouse for Rent - Sukhumvit 41</title>
+    <title>[For Rent] Townhouse, Sukhumvit 41</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
@@ -11,7 +11,7 @@
         body { background-color: #ffffff; color: #333; padding: 40px 8%; position: relative; }
         h1 { font-size: 2.2rem; font-weight: 600; margin-bottom: 25px; color: #111; }
         
-        .info-card { border: 2px solid #f1c40f; border-radius: 15px; padding: 20px; width: 420px; background-color: #fff; margin-bottom: 35px; }
+        .info-card { border: 2px solid #f1c40f; border-radius: 15px; padding: 20px; width: 420px; background-color: #fff; margin-bottom: 25px; }
         .badge { background-color: #f39c12; color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.85rem; display: inline-block; margin-bottom: 8px; }
         .price { font-size: 2rem; font-weight: 600; color: #d35400; line-height: 1.2; }
         .price span { font-size: 1.2rem; color: #333; }
@@ -21,7 +21,15 @@
         .item { display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; flex: 1; white-space: nowrap; }
         .item i { margin-top: 3px; color: #f39c12; width: 16px; text-align: center; }
 
-        /* แกลเลอรีรูปภาพ (ปรับระยะขอบล่างเพิ่มขึ้นเมื่อไม่มีแผนที่แล้ว) */
+        /* โซนกล่องรายละเอียดทรัพย์ที่ปรับปรุงใหม่ */
+        .property-description { max-width: 650px; margin-bottom: 35px; line-height: 1.6; color: #334155; font-size: 1rem; }
+        .property-description h3 { font-size: 1.2rem; font-weight: 600; color: #1e293b; margin-bottom: 4px; }
+        .code-badge { display: inline-block; background-color: #f1f5f9; color: #475569; padding: 4px 12px; border-radius: 6px; font-size: 0.9rem; font-weight: 500; margin-bottom: 15px; border: 1px solid #e2e8f0; }
+        .property-description ul { list-style: none; padding-left: 0; }
+        .property-description li { margin-bottom: 6px; display: flex; align-items: flex-start; gap: 10px; }
+        .property-description li i { color: #f39c12; margin-top: 5px; font-size: 0.85rem; }
+
+        /* แกลเลอรีรูปภาพ */
         .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-bottom: 120px; clear: both; }
         .gallery img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; border: 1px solid #eee; cursor: zoom-in; transition: transform 0.2s; }
         .gallery img:hover { transform: scale(1.02); }
@@ -42,7 +50,7 @@
 </head>
 <body>
 
-    <h1>Townhouse for Rent - Sukhumvit 41</h1>
+    <h1>[For Rent] Townhouse, Sukhumvit 41, Near BTS Phromphong 450 m.</h1>
 
     <div class="info-card">
         <div class="badge"><i class="fa-solid fa-tag"></i> Asking for</div>
@@ -50,7 +58,6 @@
         <div class="transfer-fee">Minimum 1-year contract</div>
         
         <div class="specs">
-            <!-- ฝั่งพื้นที่ -->
             <div class="item">
                 <i class="fa-solid fa-vector-square"></i>
                 <div>
@@ -58,7 +65,6 @@
                     300 Sq.m.
                 </div>
             </div>
-            <!-- ฝั่งห้องนอน/ห้องน้ำ -->
             <div class="item">
                 <i class="fa-solid fa-bed"></i>
                 <div>
@@ -66,7 +72,6 @@
                     4 bathrooms
                 </div>
             </div>
-            <!-- ฝั่งรถไฟฟ้า -->
             <div class="item">
                 <i class="fa-solid fa-train-subway"></i>
                 <div>
@@ -76,8 +81,23 @@
             </div>
         </div>
     </div>
+
+    <!-- โซนข้อความรายละเอียดทรัพย์ตามที่คุณส่งมา -->
+    <div class="property-description">
+        <h3>Property Details</h3>
+        <div class="code-badge">Property Code: TP25012093</div>
+        <ul>
+            <li><i class="fa-solid fa-circle"></i> Land area 25 sq.wa.</li>
+            <li><i class="fa-solid fa-circle"></i> Usable area 300 sq.m.</li>
+            <li><i class="fa-solid fa-circle"></i> 3 BR, 4 BA</li>
+            <li><i class="fa-solid fa-circle"></i> Fully Furnished</li>
+            <li><i class="fa-solid fa-circle"></i> 1 Maid's room</li>
+            <li><i class="fa-solid fa-circle"></i> 1 Parking</li>
+            <li><i class="fa-solid fa-circle"></i> Located Soi Sukhumvit 41, Sukhumvit Road, Khlong Tan Nuea, Watthana, Bangkok 10110</li>
+        </ul>
+    </div>
     
-    <!-- โซนรูปภาพ (สิ้นสุดเนื้อหาที่ส่วนนี้) -->
+    <!-- โซนรูปภาพ -->
     <div class="gallery">
         <img src="0.jpg" onclick="openLightbox(this.src)">
         <img src="1.jpg" onclick="openLightbox(this.src)">
@@ -96,7 +116,6 @@
         <img class="lightbox-content" id="lightboxImg">
     </div>
 
-    <!-- แถบปุ่มติดต่อลอยด้านข้าง -->
     <div class="contact-sidebar">
         <a href="tel:0931359945" class="btn btn-phone"><i class="fa-solid fa-phone"></i> Call 093-135-9945</a>
         <a href="https://line.me" target="_blank" class="btn btn-line"><i class="fa-brands fa-line"></i> LINE @aspireproperty</a>

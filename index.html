@@ -21,13 +21,18 @@
         .item { display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; flex: 1; white-space: nowrap; }
         .item i { margin-top: 3px; color: #f39c12; width: 16px; text-align: center; }
 
-        /* โซนกล่องรายละเอียดทรัพย์ที่ปรับปรุงใหม่ */
+        /* โซนกล่องรายละเอียดทรัพย์ */
         .property-description { max-width: 650px; margin-bottom: 35px; line-height: 1.6; color: #334155; font-size: 1rem; }
         .property-description h3 { font-size: 1.2rem; font-weight: 600; color: #1e293b; margin-bottom: 4px; }
         .code-badge { display: inline-block; background-color: #f1f5f9; color: #475569; padding: 4px 12px; border-radius: 6px; font-size: 0.9rem; font-weight: 500; margin-bottom: 15px; border: 1px solid #e2e8f0; }
         .property-description ul { list-style: none; padding-left: 0; }
         .property-description li { margin-bottom: 6px; display: flex; align-items: flex-start; gap: 10px; }
-        .property-description li i { color: #f39c12; margin-top: 5px; font-size: 0.85rem; }
+        
+        /* สไตล์ไอคอนทั่วไป */
+        .property-description li i { color: #f39c12; margin-top: 5px; font-size: 0.85rem; width: 16px; text-align: center; }
+        
+        /* 🛠️ สไตล์พิเศษสำหรับหมุดแผนที่สีส้มแดงเด่นๆ */
+        .property-description li i.pin-highlight { color: #e74c3c; font-size: 1.1rem; margin-top: 3px; }
 
         /* แกลเลอรีรูปภาพ */
         .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-bottom: 120px; clear: both; }
@@ -82,18 +87,19 @@
         </div>
     </div>
 
-    <!-- โซนข้อความรายละเอียดทรัพย์ตามที่คุณส่งมา -->
+    <!-- โซนรายละเอียดทรัพย์ -->
     <div class="property-description">
         <h3>Property Details</h3>
         <div class="code-badge">Property Code: TP25012093</div>
         <ul>
-            <li><i class="fa-solid fa-circle"></i> Land area 25 sq.wa.</li>
-            <li><i class="fa-solid fa-circle"></i> Usable area 300 sq.m.</li>
-            <li><i class="fa-solid fa-circle"></i> 3 BR, 4 BA</li>
-            <li><i class="fa-solid fa-circle"></i> Fully Furnished</li>
-            <li><i class="fa-solid fa-circle"></i> 1 Maid's room</li>
-            <li><i class="fa-solid fa-circle"></i> 1 Parking</li>
-            <li><i class="fa-solid fa-circle"></i> Located Soi Sukhumvit 41, Sukhumvit Road, Khlong Tan Nuea, Watthana, Bangkok 10110</li>
+            <li><i class="fa-solid fa-circle"></i> 🔹 Land area 25 sq.wa.</li>
+            <li><i class="fa-solid fa-circle"></i> 🔹 Usable area 300 sq.m.</li>
+            <li><i class="fa-solid fa-circle"></i> 🔹 3 BR, 4 BA</li>
+            <li><i class="fa-solid fa-circle"></i> 🔹 Fully Furnished</li>
+            <li><i class="fa-solid fa-circle"></i> 🔹 1 Maid's room</li>
+            <li><i class="fa-solid fa-circle"></i> 🔹 1 Parking</li>
+            <!-- 📌 เปลี่ยนเป็นไอคอนหมุดแผนที่เด่นๆ (Location Pin) เรียบร้อยครับ -->
+            <li><i class="fa-solid fa-location-dot pin-highlight"></i> Located Soi Sukhumvit 41, Sukhumvit Road, Khlong Tan Nuea, Watthana, Bangkok 10110</li>
         </ul>
     </div>
     
@@ -110,7 +116,7 @@
         <img src="8.jpg" onclick="openLightbox(this.src)">
     </div>
 
-    <!-- ป๊อปอัปขยายรูปใหญ่เมื่อลูกค้าคลิก -->
+    <!-- ป๊อปอัปขยายรูปใหญ่ -->
     <div id="myLightbox" class="lightbox" onclick="closeLightbox()">
         <span class="close-btn">&times;</span>
         <img class="lightbox-content" id="lightboxImg">

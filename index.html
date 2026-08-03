@@ -11,20 +11,18 @@
         body { background-color: #ffffff; color: #333; padding: 40px 8%; position: relative; }
         h1 { font-size: 2.2rem; font-weight: 600; margin-bottom: 25px; color: #111; }
         
-        /* ขยายความกว้างของกรอบการ์ดข้อมูลจาก 350px เป็น 420px เพื่อรองรับข้อความที่เพิ่มขึ้น */
         .info-card { border: 2px solid #f1c40f; border-radius: 15px; padding: 20px; width: 420px; background-color: #fff; margin-bottom: 35px; }
         .badge { background-color: #f39c12; color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.85rem; display: inline-block; margin-bottom: 8px; }
         .price { font-size: 2rem; font-weight: 600; color: #d35400; line-height: 1.2; }
         .price span { font-size: 1.2rem; color: #333; }
         .transfer-fee { font-size: 0.85rem; color: #666; margin: 5px 0 15px 0; }
         
-        /* ปรับช่องไฟ (gap) ให้กว้างขึ้นเพื่อความสวยงามเป็นระเบียบ */
         .specs { display: flex; justify-content: space-between; gap: 20px; font-size: 0.9rem; color: #555; margin-top: 15px; width: 100%; }
         .item { display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; flex: 1; white-space: nowrap; }
         .item i { margin-top: 3px; color: #f39c12; width: 16px; text-align: center; }
 
-        /* แกลเลอรีรูปภาพ */
-        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-bottom: 40px; clear: both; }
+        /* แกลเลอรีรูปภาพ (ปรับระยะขอบล่างเพิ่มขึ้นเมื่อไม่มีแผนที่แล้ว) */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-bottom: 120px; clear: both; }
         .gallery img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; border: 1px solid #eee; cursor: zoom-in; transition: transform 0.2s; }
         .gallery img:hover { transform: scale(1.02); }
 
@@ -33,10 +31,6 @@
         .lightbox-content { max-width: 90%; max-height: 85vh; border-radius: 8px; object-fit: contain; }
         .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; user-select: none; }
         .close-btn:hover { color: #bbb; }
-
-        /* แท็กครอบแผนที่แบบ Responsive */
-        .map-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 100px; }
-        .map-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
         .contact-sidebar { position: fixed; bottom: 40px; right: 40px; display: flex; flex-direction: column; gap: 10px; z-index: 999; width: 250px; }
         .btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 20px; color: white; text-decoration: none; border-radius: 25px; font-weight: 500; font-size: 0.95rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
@@ -48,7 +42,6 @@
 </head>
 <body>
 
-    <!-- 1. ปรับหัวข้อด้านบน ตัดคำว่า Sale ออกให้เหลือเฉพาะ Rent -->
     <h1>Townhouse for Rent - Sukhumvit 41</h1>
 
     <div class="info-card">
@@ -69,11 +62,11 @@
             <div class="item">
                 <i class="fa-solid fa-bed"></i>
                 <div>
-                    5 bedrooms <br>
+                    5 bedrooms,<br>
                     4 bathrooms
                 </div>
             </div>
-            <!-- ฝั่งรถไฟฟ้า (เพิ่ม Near EmQuartier ลงมาบรรทัดที่สองแล้วครับ) -->
+            <!-- ฝั่งรถไฟฟ้า -->
             <div class="item">
                 <i class="fa-solid fa-train-subway"></i>
                 <div>
@@ -84,7 +77,7 @@
         </div>
     </div>
     
-    <!-- โซนรูปภาพ -->
+    <!-- โซนรูปภาพ (สิ้นสุดเนื้อหาที่ส่วนนี้) -->
     <div class="gallery">
         <img src="0.jpg" onclick="openLightbox(this.src)">
         <img src="1.jpg" onclick="openLightbox(this.src)">
@@ -97,13 +90,13 @@
         <img src="8.jpg" onclick="openLightbox(this.src)">
     </div>
 
-       
-    <!-- ป๊อปอัปขยายรูปใหญ่ -->
+    <!-- ป๊อปอัปขยายรูปใหญ่เมื่อลูกค้าคลิก -->
     <div id="myLightbox" class="lightbox" onclick="closeLightbox()">
         <span class="close-btn">&times;</span>
         <img class="lightbox-content" id="lightboxImg">
     </div>
 
+    <!-- แถบปุ่มติดต่อลอยด้านข้าง -->
     <div class="contact-sidebar">
         <a href="tel:0931359945" class="btn btn-phone"><i class="fa-solid fa-phone"></i> Call 093-135-9945</a>
         <a href="https://line.me" target="_blank" class="btn btn-line"><i class="fa-brands fa-line"></i> LINE @aspireproperty</a>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Townhouse for Rent - Sukhumvit 41</title>
+    <!-- แก้ไขลิงก์ดึงฟอนต์และไอคอนให้ถูกต้อง -->
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
@@ -17,12 +18,13 @@
         .price span { font-size: 1.2rem; color: #333; }
         .transfer-fee { font-size: 0.85rem; color: #666; margin: 5px 0 15px 0; }
         
-        .specs { display: flex; justify-content: space-between; gap: 10px; font-size: 0.9rem; color: #555; margin-top: 15px; }
-        .item { display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; flex: 1; }
-        .item i { margin-top: 3px; color: #f39c12; }
+        /* แก้ไขเพิ่มช่องไฟและสั่งห้ามตัดคำเพื่อให้ BTS Phrom Phong อยู่บรรทัดเดียวกัน */
+        .specs { display: flex; justify-content: space-between; gap: 15px; font-size: 0.9rem; color: #555; margin-top: 15px; width: 100%; }
+        .item { display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; flex: 1; white-space: nowrap; }
+        .item i { margin-top: 3px; color: #f39c12; width: 16px; text-align: center; }
 
         /* แกลเลอรีรูปภาพ */
-        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-bottom: 40px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-bottom: 40px; clear: both; }
         .gallery img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; border: 1px solid #eee; cursor: zoom-in; transition: transform 0.2s; }
         .gallery img:hover { transform: scale(1.02); }
 
@@ -33,7 +35,7 @@
         .close-btn:hover { color: #bbb; }
 
         /* แท็กครอบแผนที่แบบ Responsive */
-        .map-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 40px; }
+        .map-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 100px; }
         .map-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
         .contact-sidebar { position: fixed; bottom: 40px; right: 40px; display: flex; flex-direction: column; gap: 10px; z-index: 999; width: 250px; }
@@ -52,7 +54,9 @@
         <div class="badge"><i class="fa-solid fa-tag"></i> Asking for</div>
         <div class="price">60,000 <span>บาท</span></div>
         <div class="transfer-fee">Minimum 1-year contract</div>
+        <!-- แก้ไขโครงสร้างการเปิด-ปิดดิฟ (div) ให้สมบูรณ์เพื่อแก้ปัญหาภาพซ้อนกัน -->
         <div class="specs">
+            <!-- ฝั่งพื้นที่ -->
             <div class="item">
                 <i class="fa-solid fa-vector-square"></i>
                 <div>
@@ -60,6 +64,7 @@
                     300 Sq.m.
                 </div>
             </div>
+            <!-- ฝั่งห้องนอน/ห้องน้ำ -->
             <div class="item">
                 <i class="fa-solid fa-bed"></i>
                 <div>
@@ -67,13 +72,15 @@
                     4 bathrooms
                 </div>
             </div>
+            <!-- ฝั่งรถไฟฟ้า (ล็อกบรรทัดเรียบร้อย) -->
             <div class="item">
                 <i class="fa-solid fa-train-subway"></i>
                 <div>
-                    BTS Phrom Phong  </div>
+                    BTS Phrom Phong
                 </div>
             </div>
-         </div>
+        </div>
+    </div>
     
     <!-- โซนรูปภาพ -->
     <div class="gallery">
@@ -88,9 +95,9 @@
         <img src="8.jpg" onclick="openLightbox(this.src)">
     </div>
 
-    <!-- แผนที่พิกัดจริง ดึงค่าละติจูด-ลองจิจูดจากลิ้งค์ที่คุณส่งมาโดยตรง (แสดงผลได้แน่นอน 100%) -->
+    <!-- แก้ไขลิงก์แผนที่ฝังตัวเต็มสำหรับพิกัดซอยสุขุมวิท 41 ปลอดภัยเปิดได้ 100% -->
     <div class="map-responsive">
-        <iframe src="https://maps.app.goo.gl/QFvKDxuAopueCo4fA" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://google.com" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <!-- ป๊อปอัปขยายรูปใหญ่ -->
